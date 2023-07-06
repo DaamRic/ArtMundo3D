@@ -1,0 +1,148 @@
+body{
+    background-color: #28f89018;
+}
+
+header, footer {
+    background-color: #cbf8282a;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    border: 1px solid rgba(233, 38, 38, 0.363);
+}
+
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+nav{
+    margin-top: 20px;
+}
+
+header h1 {
+    margin-bottom: 20px; 
+}
+
+h2 {
+    margin-bottom: 20px; 
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin-right: 100px;
+}
+
+nav li:last-child {
+    margin-right: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #161515;
+    padding: 10px;
+    border: 1px solid #223509ab;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background-color: #82af19a6;
+}
+
+.agregar-carrito{
+    background-color: #cbf8282a;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.columnas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+}
+
+.columna {
+    flex: 1 0 calc(25% - 20px);
+    margin: 10px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.158);
+}
+
+.agregar-carrito:hover {
+    background-color: #82af19a6;
+}
+
+.columna img {
+    max-width: 100%;
+    max-height: 100%;
+    padding: 30px;
+}
+
+#ver-carrito {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f3eeee00;
+}
+
+#carrito-lista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#carrito-lista img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-bottom: 10px;
+}
+
+#ver-carrito:hover {
+    background-color: #82af19a6;
+}
+
+#carrito-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    background-color: #c5e679e5;;
+    overflow-y: auto;
+    z-index: 9999;
+    transition: transform 0.3s ease-in-out;}
+
+    #carrito {
+        padding: 50px;
+        position: relative;
+    }
+
+    #cerrar-carrito {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 18px;
+        background-color: #f00b0b;
+        border: none;
+        color: #eee8e8;
+        border: #000 solid 1px;
+        cursor: pointer;
+    }
+
+    .hidden {
+        transform: translateX(100%);
+    }
