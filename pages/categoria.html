@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/index.js"></script>
+    <title>ArtMundo3D</title>
+</head>
+<body>
+    <header>
+        <div>
+        <h1 ><a class="titulo" href="../index.html">ArtMundo3D</a></h1>
+        </div>
+            <div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="categoria.html">Filamento</a></li>
+                        <li><a href="acercade.html">Acerca De</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </nav>
+                <button id="ver-carrito" onclick="mostrarCarrito()">Ver Carrito (<span id="carrito-cantidad">0</span>)</button>
+            </div>
+    </header>
+    <main>
+        <div class="columnas">
+            <div class="columna">
+                <img src="../img/categoria-img/1.webp" alt="Imagen 1">
+                <p>Filamento Pla Impresora 3d Hellbot Ecofila Recarga 1kg 1.75 Color Marrón</p>
+                <p><span style="font-size:30px;">$3.730</span></p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Filamento Pla Impresora 3d Hellbot Ecofila Recarga 1kg 1.75 Color Marrón', 3730, '../img/categoria-img/1.webp')">Agregar al carrito</button>
+            </div>
+        </div>
+        
+        <div class="columna">
+            <img src="../img/categoria-img/2.webp" alt="Imagen 2">
+            <p>Filamento 3D PLA Printalot de 1.75mm y 1kg blanco</p>
+            <p><span style="font-size:30px;">$5.070</span></p>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Filamento 3D PLA Printalot de 1.75mm y 1kg blanco', 5070, '../img/categoria-img/2.webp')">Agregar al carrito</button>
+        </div>
+
+        <div class="columna">
+            <img src="../img/categoria-img/3.webp" alt="Imagen 3">
+            <p>Filamento Pla Impresora 3d Gst 1,75mm X1 Kg 320mt</p>
+            <p><span style="font-size:30px;">$4.199</span></p>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Filamento Pla Impresora 3d Gst 1,75mm X1 Kg 320mt', 4199, '../img/categoria-img/3.webp')">Agregar al carrito</button>
+        </div>
+
+        <div class="columna">
+            <img src="../img/categoria-img/4.webp" alt="Imagen 4">
+            <p>Filamento 3d Pla Printalot De 1,75mm Y 1kg Amarillo</p>
+            <p><span style="font-size:30px;">$5.070</span></p>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Filamento 3d Pla Printalot De 1,75mm Y 1kg Amarillo',5070, '../img/categoria-img/4.webp')">Agregar al carrito</button>
+        </div>
+
+        <div class="columna">
+            <img src="../img/categoria-img/5.webp" alt="Imagen 5">
+            <p>Filamento 3D PLA Printalot de 1.75mm y 1kg gris</p>
+            <p><span style="font-size:30px;">$5.070</span></p>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Filamento 3D PLA Printalot de 1.75mm y 1kg gris', 5070, '../img/categoria-img/5.webp')">Agregar al carrito</button>
+        </div>
+
+        <div class="columna">
+            <img src="../img/categoria-img/6.webp" alt="Imagen 6">
+            <p>Filamento Pla Filar 1.75 Mm 1 Kg Blanco Antartida</p>
+            <p><span style="font-size:30px;">$4.353</span></p>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Filamento Pla Filar 1.75 Mm 1 Kg Blanco Antartida', 4353, '../img/categoria-img/6.webp')">Agregar al carrito</button>
+        </div>
+
+        <div class="columna">
+            <img src="../img/categoria-img/7.webp" alt="Imagen 7">
+            <p>Filamento 3D PLA Grilon3 de 1.75mm y 1kg fucsia</p>
+            <p><span style="font-size:30px;">$5.438</span></p>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Filamento 3D PLA Grilon3 de 1.75mm y 1kg fucsia', 5438, '../img/categoria-img/7.webp')">Agregar al carrito</button>
+        </div>
+
+        <div class="columna">
+            <img src="../img/categoria-img/8.webp" alt="Imagen 8">
+            <p>Filamento Pla Impresora 3d Hellbot Ecofila 1kg 1.75mm</p>
+            <p><span style="font-size:30px;">$4.090</span></p>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Filamento Pla Impresora 3d Hellbot Ecofila 1kg 1.75mm', 4090, '../img/categoria-img/8.webp')">Agregar al carrito</button>
+        </div>
+
+        <div class="columna">
+            <img src="../img/categoria-img/9.webp" alt="Imagen 9">
+            <p>Filamento 3D Simpliflex Grilon3 de 1.75mm y 1kg nova</p>
+            <p><span style="font-size:30px;">$7.990</span></p>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Impresora 3d Creality Sermoon V1 Pro Inteligente Con Cámara', 7990, '../img/categoria-img/9.webp')">Agregar al carrito</button>
+        </div>
+        
+        <div class="columna">
+            <img src="../img/categoria-img/10.webp" alt="Imagen 10">
+            <p>Filamento 3D ABS Grilon3 de 1.75mm y 1kg verde</p>
+            <p><span style="font-size:30px;">$5.558</span></p>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Filamento 3D ABS Grilon3 de 1.75mm y 1kg verde', 5558, '../img/categoria-img/10.webp')">Agregar al carrito</button>
+        </div>
+    </main>
+
+        <footer>
+            <div>
+                <h2><a class="titulo" href="../index.html">ArtMundo3D</a></h2>
+            </div>
+            <div>
+                <p>Proyecto Curso Coderhouse</p>
+            </div>
+            <div>
+                <p>Proyecto Realizado por:</p>
+                <p>Damian Ricardi®</p>
+            </div>
+        </footer>
+
+        <section id="carrito-container" class="hidden">
+            <div id="carrito">
+                <button id="cerrar-carrito" onclick="cerrarCarrito()">X</button>
+                    <h2>Carrito de Compras</h2>
+                        <ul id="carrito-lista"></ul>
+                            <p>Total: <span id="total-carrito">$0</span></p>
+                            <button id="finalizar-pedido" onclick="finalizarPedido()">Finalizar Pedido</button>
+            </div>
+                    <section id="pedido-exito"></section>
+        </section>
+        
+</body>
+</html>
