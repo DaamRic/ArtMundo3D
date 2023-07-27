@@ -13,21 +13,21 @@
 <body>
     <header>
         <div>
-        <h1><a class="titulo" href="../index.html">ArtMundo3D</a></h1>
+        <h1><a class="titulo" href="index.html">ArtMundo3D</a></h1>
         </div>
             <div>
                 <nav>
                     <ul>
                         <li><a href="index.html">Inicio</a></li>
-                        <li><a href="pages/categoria.html">Filamento</a></li>
-                        <li><a href="pages/acercade.html">Acerca De</a></li>
-                        <li><a href="pages/contacto.html">Contacto</a></li>
+                        <li><a href="categoria.html">Filamento</a></li>
+                        <li><a href="acercade.html">Acerca De</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
                     </ul>
                 </nav>
-                <button id="ver-carrito" onclick="mostrarCarrito()">Ver Carrito (<span id="carrito-cantidad">0</span>)</button>
+                <button id="ver-carrito" onclick="mostrarCarrito()">Carrito(<span id="carrito-cantidad"></span>)</button>
             </div>
     </header>
-    <main>
+    <main class="mains">
         <div class="columnas">
             <div class="columna">
                 <img src="img/index/1.webp" alt="Imagen 1">
@@ -120,7 +120,7 @@
                     <h2>Carrito de Compras</h2>
                         <ul id="carrito-lista"></ul>
                             <p>Total: <span id="total-carrito">$0</span></p>
-                            <button id="finalizar-pedido" onclick="realizarPedido()">Realizar Pedido</button>
+                            <button onclick="realizarPedido()">Realizar Pedido</button>
             </div>
         </section>
 </body>

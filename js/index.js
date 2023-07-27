@@ -34,7 +34,7 @@ function agregarAlCarrito(producto, precio, imagen) {
         icon: 'success',
         title: 'AGREGADO AL CARRITO',
         showConfirmButton: false,
-        timer: 1500
+        timer: 2000
     })
 }
 
@@ -42,7 +42,7 @@ function removerDelCarrito(index) {
     let productoRemovido = carrito[index];
     totalCarrito -= productoRemovido.precio;
     carrito.splice(index, 1);
-    console.log("Producto removido del carrito en el índice: " + index);
+    console.log("Producto removido del carrito: " + index);
     console.log("Contenido del carrito actualizado: " + JSON.stringify(carrito));
     actualizarCarrito();
     guardarEnLocalStorage();
@@ -51,41 +51,29 @@ function removerDelCarrito(index) {
 
 function realizarPedido(){
     document.body.innerHTML = 
-    ` 
+        `
     <header>
         <div>
-        <h1><a class="titulo" href="../index.html">ArtMundo3D</a></h1>
+        <h1><a class="titulo" href="index.html">ArtMundo3D</a></h1>
         </div>
-            <div>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="pages/categoria.html">Filamento</a></li>
-                        <li><a href="pages/acercade.html">Acerca De</a></li>
-                        <li><a href="pages/contacto.html">Contacto</a></li>
-                    </ul>
-                </nav>
-                <button id="ver-carrito" onclick="mostrarCarrito()">Ver Carrito (<span id="carrito-cantidad">0</span>)</button>
-            </div>
     </header>
 
     <section id="formulario-pedido">
-    <h2 style="text-align:center; margin-top:20px">Realizar Pedido</h2>
-    <div id="formulario-container">
-    <form onsubmit="finalizarPedidoFormulario(event)">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" required><br>
-        <label for="numero-tarjeta">Número de Tarjeta:</label>
-        <input type="text" id="numero-tarjeta" required><br>
-        <label for="fecha-vencimiento">Fecha de Vencimiento:</label>
-        <input type="text" id="fecha-vencimiento" required><br>
-        <label for="cvv">CVV:</label>
-        <input type="text" id="cvv" required><br>
-        <button onclick="finalizarPedi()">Finalizar Pedido</button>
-    </form>
-    </div>
-</section>
-
+        <h2 style="text-align:center; margin-top:20px">Realizar Pedido</h2>
+        <div id="formulario-container">
+            <form onsubmit="finalizarPedido(event)">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" placeholder="Juan Carlos" required><br>
+                <label for="numero-tarjeta">Número de Tarjeta:</label>
+                <input type="text" id="numero-tarjeta" placeholder="444112321312312" required><br>
+                <label for="fecha-vencimiento">Fecha de Vencimiento:</label>
+                <input type="text" id="fecha-vencimiento" placeholder="12/21" required><br>
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" placeholder="000" required><br>
+                <button type="submit">Finalizar Pedido</button>
+            </form>
+        </div>
+    </section>
     <footer>
             <div>
                 <h2><a class="titulo" href="index.html">ArtMundo3D</a></h2>
@@ -99,40 +87,73 @@ function realizarPedido(){
             </div>
         </footer>`;
 }
-function finalizarPedi() {
-    let carritoContainer = document.getElementById("carrito-container");
-    let pedidoExitoContainer = document.getElementById("pedido-exito");
-    carritoContainer.classList.add("hidden");
-    pedidoExitoContainer.classList.remove("hidden");
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'PEDIDO FINALIZADO',
-        showConfirmButton: false,
-        timer: 2500
-    }).then(function () {
-        carrito = [];
-        totalCarrito = 0;
-        guardarEnLocalStorage();
-    })
+
+function finalizarPedido(event) {
+    event.preventDefault();
+    const nombre = document.getElementById("nombre").value;
+    const numeroTarjeta = document.getElementById("numero-tarjeta").value;
+    const fechaVencimiento = document.getElementById("fecha-vencimiento").value;
+    const cvv = document.getElementById("cvv").value;
+    hacerPedido(nombre, numeroTarjeta, fechaVencimiento, cvv);
 }
 
-function finalizarPedidos() {
-    let carritoContainer = document.getElementById("carrito-container");
-    let pedidoExitoContainer = document.getElementById("pedido-exito");
-    carritoContainer.classList.add("hidden");
-    pedidoExitoContainer.classList.remove("hidden");
+function hacerPedido(nombre, numeroTarjeta, fechaVencimiento, cvv) {
+    if (carrito.length === 0) {
+        Swal.fire({
+            title: 'Error',
+            text: 'El carrito esta vacio. Agrega productos para hacer el pedido.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+        return;
+    }
+    const pedido = {
+        nombre: nombre,
+        numeroTarjeta: numeroTarjeta,
+        fechaVencimiento: fechaVencimiento,
+        cvv: cvv,
+        carrito: carrito
+    };
     Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'PEDIDO FINALIZADO',
-        showConfirmButton: false,
-        timer: 1500
-    })
-    carrito = [];
-    totalCarrito = 0;
-    actualizarCarrito();
+        title: 'Pedido',
+        html: `
+            <strong>Nombre:</strong> ${pedido.nombre}<br>
+            <strong>Número de Tarjeta:</strong> ${pedido.numeroTarjeta}<br>
+            <strong>Fecha de Vencimiento:</strong> ${pedido.fechaVencimiento}<br>
+            <strong>CVV:</strong> ${pedido.cvv}<br>
+            <strong>Contenido del Carrito:</strong><br>
+            ${mostrarContenidoCarrito(pedido.carrito)}
+        `,
+        icon: 'info',
+        confirmButtonText: 'Aceptar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'PEDIDO FINALIZADO',
+                showConfirmButton: false,
+                timer: 2000
+            });
+            carrito = [];
+            totalCarrito = 0;
+            actualizarCarrito();
+            guardarEnLocalStorage();
+        }
+    });
 }
+
+function mostrarContenidoCarrito(carrito) {
+    let contenidoCarrito = '';
+    if (carrito.length === 0) {
+        contenidoCarrito = 'El carrito esta vacio.';
+    } else {
+        carrito.forEach((producto, index) => {
+            contenidoCarrito += `${index + 1}. ${producto.producto} - Precio: $${producto.precio.toFixed(2)}<br>`;
+        });
+    }
+    return contenidoCarrito;
+    }
 
 function actualizarCarrito() {
     let carritoLista = document.getElementById("carrito-lista");

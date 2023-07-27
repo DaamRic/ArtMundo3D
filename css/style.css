@@ -66,7 +66,7 @@ nav a:hover {
     background-color: #cbf8282a;
 }
 
-main {
+.mains {
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -170,3 +170,9 @@ main {
     form button {
         margin-bottom: 5px;
     }
+
+.margins{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
